@@ -1,11 +1,318 @@
-doctype
-html(lang=config.language)
-  include ./partial/header-base.pug
-  body
-    include ./partial/header.pug
-    main
-      section.main-content !{ body }
-    include ./partial/footer.pug
-    script(src=url_for('scripts/dark.js'))
-    if is_post()
-      script(src=url_for('scripts/post.js'))
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="QT入门笔记 注意事项：   界面设计的search使用时把要搜索的内容的前面加上一个“q”   C++中头文件h与源文件cpp之间的切换快捷键：F4   在ui界面上面修改控件名字后，要编译程序ctrl+b   通过qDebug()&lt;&lt;输出调试内容，在应用程序输出查看   只要是Widget都是属于控件，最底层的Widgets都是窗体   如果指针在使用的时候，我们将指针变量名称加上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSMDLR">
+<meta property="og:url" content="http://example.com/2024/03/08/Qt%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="WSMDLR">
+<meta property="og:description" content="QT入门笔记 注意事项：   界面设计的search使用时把要搜索的内容的前面加上一个“q”   C++中头文件h与源文件cpp之间的切换快捷键：F4   在ui界面上面修改控件名字后，要编译程序ctrl+b   通过qDebug()&lt;&lt;输出调试内容，在应用程序输出查看   只要是Widget都是属于控件，最底层的Widgets都是窗体   如果指针在使用的时候，我们将指针变量名称加上">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-03-08T13:40:56.531Z">
+<meta property="article:modified_time" content="2024-03-08T05:39:36.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/03/08/Qt%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/03/08/Qt%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/","path":"2024/03/08/Qt入门笔记/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | WSMDLR</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">WSMDLR</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个大聪明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QT%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">QT入门笔记</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">超级牛牛小博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/03/08/Qt%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSMDLR">
+      <meta itemprop="description" content="超级牛牛小博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | WSMDLR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-08 21:40:56 / Modified: 13:39:36" itemprop="dateCreated datePublished" datetime="2024-03-08T21:40:56+08:00">2024-03-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="QT入门笔记"><a href="#QT入门笔记" class="headerlink" title="QT入门笔记"></a>QT入门笔记</h1><ul>
+<li><p>注意事项<strong>：</strong></p>
+<p>  界面设计的search使用时把要搜索的内容的前面加上一个“q”</p>
+<p>  C++中头文件h与源文件cpp之间的切换快捷键：F4</p>
+<p>  在ui界面上面修改控件名字后，要编译程序ctrl+b</p>
+<p>  通过qDebug()&lt;&lt;输出调试内容，在应用程序输出查看</p>
+<p>  只要是Widget都是属于控件，最底层的Widgets都是窗体</p>
+<p>  如果指针在使用的时候，我们将指针变量名称加上<em>，意味着取得指针指向的内存的值。就是说</em>代表取值</p>
+<p>  自动在cpp文件生成定义的快捷键：Alt+Enter</p>
+<p>  快捷键alt+&#x2F;可以代码提示</p>
+<p>  sqlite3 wsmdlr.db 表示创建一个数据库文件名称为wsmdlr.db<br>  .tables表示显示当前数据库中所有的表有哪些<br>  create table userinfo(username,password)创建userinfo数据表<br>  向数据表userinfo中插入一行记录wsmdlr|123<br>  insert into userinfo(username,password) values(‘wsmdlr’,123);<br>  查询userinfo表中的所有数据<br>  select * from userinfo;<br>  更新数据库中所有的数据记录用update<br>  更新所有行的password字段的值<br>  update userinfo set password&#x3D;123222;</p>
+<p>  更新某些指定的记录对应的password，此时需要用where语句进行筛选定位<br>  update userinfo set password&#x3D;123 where username&#x3D;’wsmdlr’;</p>
+<p>  如果想要清空某张表，使用delete语句<br>  delete from userinfo;清空userinfo表中所有的记录</p>
+<p>  想要清除指定行的记录，就要结合使用where语句<br>  delete from userinfo where username&#x3D;’wsmdlr’;</p>
+<p>  通过qt使用sqlite数据库<br>  引入sql类库<br>  在pro工程文件中引入sql<br>  引入方法QT+&#x3D;sql<br>  另一种方式就是在原来的基础上拼接，用空格隔开，每一个空格隔开的表示一个类库<br>  窗体头文件引入QSqlDatabase就可以链接数据库、创建数据库<br>  db&#x3D;QSqlDatabase::addDatabase(“QSQLITE”);通过这个来创建需要链接的数据库类型。<br>  通过setDatabaseName方法创建数据库文件</p>
+<p>  窗体引入QSqlQuery就可以执行数据库语句了<br>  通过QSqlQuery的exec方法来执行sql语句</p>
+<p>  qt操作的sqlite如果数据库或表已经存在，那么是不会再次创建，而是打开</p>
+<p>  qlable<br>  qbutton<br>  qlineedit<br>  表格网格控件<br>  qtableview控件显示数据库中的内容为表格行<br>  修改窗体的标题的属性：windowtitle<br>  如果实在写的时候找不到，要学会使用帮助文档参考。<br>  实现数据库对象的初始化，要使用QSqlDatabase静态方法<br>  db&#x3D;QSqlDatabase::addDatabase(“QSQLITE”);</p>
+<p>  qtableview控件通过QSqlQueryModel来渲染数据<br>  1.通过setModel的形式加入QSqlQueryModel对象<br>  2.通过QSqlQueryModel来从数据库中查询出需要的数据<br>  3.如果要修改显示的表头方法：<br>  法一：通过数据库查询字段取别名的方式 ，使用as关键词<br>  select username as 用户名,password as 密码 from userinfo<br>  法二：通过QSqlQueryModel的设置表头的方法来实现<br>  通过模型来设置表头字段的别名，使用setHeaderData方法</p>
+<p>  tableview表格内横向列扩展，使用属性horizontalheaderstretchlastsection</p>
+<p>  获取tableview中当前点击行的数据，中间的0表示第0列。<br>  QString username&#x3D;currentIndexModel.siblingAtColumn(0).data().toString();</p>
+</li>
+<li><p><strong>概念：</strong></p>
+<p>  继承：一个类在继承一个父类后，会把父类的方法都继承下来</p>
+<p>  qt中槽：代表方法，我们需要通过信号到槽方法中</p>
+<p>  信号：理解为事件</p>
+<p>  ::可以访问C++类最终的static定义的方法</p>
+<p>  →访问类对象中的某个属性或方法</p>
+<p>  private：私有化，只有类内部才能使用</p>
+<p>  public：公共的，可以把这个属性开放出去使用，这样在面向对象的开发中失去了意义</p>
+<p>  protect：保护的，程序类库级别使用</p>
+<p>  窗体出现的本质：窗体被死循环</p>
+<p>  slot槽：方法（函数）</p>
+<p>  signal信号：事件</p>
+<p>  *：代表指针</p>
+<p>  &amp;：代表取指针指向的地址，此时修改的值是最为彻底。（取址）</p>
+<p>  connect方法：信号槽方法</p>
+<p>  connect方法的四个参数依次是：</p>
+<p>  信号发送者的指针，发送了什么信号，接收者的指针接收者的槽函数，接着是槽方法</p>
+<p>  QT4：<code>connect(timer1,SIGNAL(timeout()),this,SLOT(daojishi()));</code></p>
+<p>  QT5：<code>connect(timer1,&amp;QTimer::timeout,this,&amp;text::daojishi);</code></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/03/08/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-angle-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
