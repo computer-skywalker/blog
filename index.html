@@ -115,7 +115,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/blog/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -133,6 +133,81 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://computer-skywalker.github.io/blog/2024/03/17/F=a^2+b^2=c^2+d^2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSMDLR">
+      <meta itemprop="description" content="超级牛牛小博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | WSMDLR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/blog/2024/03/17/F=a%5E2+b%5E2=c%5E2+d%5E2/" class="post-title-link" itemprop="url">Untitled</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-03-17 12:30:40 / Modified: 20:31:03" itemprop="dateCreated datePublished" datetime="2024-03-17T12:30:40+08:00">2024-03-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="F-a-2-b-2-c-2-d-2"><a href="#F-a-2-b-2-c-2-d-2" class="headerlink" title="F&#x3D;a^2+b^2&#x3D;c^2+d^2"></a>F&#x3D;a^2+b^2&#x3D;c^2+d^2</h1><p>下面是部分通过计算机计算得到的数据，仅供参考，不一定对</p>
+<p>代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> range = <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 计算所有可能的f和对应的a、b、c、d的值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> a = <span class="number">1</span>; a &lt;= range; ++a) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> b = a + <span class="number">1</span>; b &lt;= range; ++b) &#123;</span><br><span class="line">            <span class="type">int</span> f1 = a * a + b * b;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> c = a + <span class="number">1</span>; c &lt;= range; ++c) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> d = c + <span class="number">1</span>; d &lt;= range; ++d) &#123;</span><br><span class="line">                    <span class="type">int</span> f2 = c * c + d * d;</span><br><span class="line">                    <span class="keyword">if</span> (f1 == f2 &amp;&amp; a != c &amp;&amp; a != d &amp;&amp; b != c &amp;&amp; b != d) &#123;</span><br><span class="line">                        std::cout &lt;&lt; <span class="string">&quot;f = &quot;</span> &lt;&lt; f1 &lt;&lt; <span class="string">&quot;, a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; <span class="string">&quot;, c = &quot;</span> &lt;&lt; c &lt;&lt; <span class="string">&quot;, d = &quot;</span> &lt;&lt; d &lt;&lt; std::endl;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">system</span> (<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果(部分)：</p>
+<p>f &#x3D; 65, a &#x3D; 1, b &#x3D; 8, c &#x3D; 4, d &#x3D; 7<br>f &#x3D; 145, a &#x3D; 1, b &#x3D; 12, c &#x3D; 8, d &#x3D; 9<br>f &#x3D; 170, a &#x3D; 1, b &#x3D; 13, c &#x3D; 7, d &#x3D; 11<br>f &#x3D; 290, a &#x3D; 1, b &#x3D; 17, c &#x3D; 11, d &#x3D; 13<br>f &#x3D; 325, a &#x3D; 1, b &#x3D; 18, c &#x3D; 6, d &#x3D; 17<br>f &#x3D; 325, a &#x3D; 1, b &#x3D; 18, c &#x3D; 10, d &#x3D; 15<br>f &#x3D; 442, a &#x3D; 1, b &#x3D; 21, c &#x3D; 9, d &#x3D; 19<br>f &#x3D; 485, a &#x3D; 1, b &#x3D; 22, c &#x3D; 14, d &#x3D; 17<br>f &#x3D; 530, a &#x3D; 1, b &#x3D; 23, c &#x3D; 13, d &#x3D; 19<br>f &#x3D; 730, a &#x3D; 1, b &#x3D; 27, c &#x3D; 17, d &#x3D; 21<br>f &#x3D; 785, a &#x3D; 1, b &#x3D; 28, c &#x3D; 16, d &#x3D; 23<br>f &#x3D; 901, a &#x3D; 1, b &#x3D; 30, c &#x3D; 15, d &#x3D; 26<br>f &#x3D; 962, a &#x3D; 1, b &#x3D; 31, c &#x3D; 11, d &#x3D; 29<br>f &#x3D; 1025, a &#x3D; 1, b &#x3D; 32, c &#x3D; 8, d &#x3D; 31<br>f &#x3D; 1025, a &#x3D; 1, b &#x3D; 32, c &#x3D; 20, d &#x3D; 25<br>f &#x3D; 1090, a &#x3D; 1, b &#x3D; 33, c &#x3D; 19, d &#x3D; 27<br>f &#x3D; 1157, a &#x3D; 1, b &#x3D; 34, c &#x3D; 14, d &#x3D; 31<br>f &#x3D; 1370, a &#x3D; 1, b &#x3D; 37, c &#x3D; 23, d &#x3D; 29<br>f &#x3D; 1445, a &#x3D; 1, b &#x3D; 38, c &#x3D; 17, d &#x3D; 34<br>f &#x3D; 1445, a &#x3D; 1, b &#x3D; 38, c &#x3D; 22, d &#x3D; 31<br>f &#x3D; 1765, a &#x3D; 1, b &#x3D; 42, c &#x3D; 26, d &#x3D; 33<br>f &#x3D; 1850, a &#x3D; 1, b &#x3D; 43, c &#x3D; 13, d &#x3D; 41<br>f &#x3D; 1850, a &#x3D; 1, b &#x3D; 43, c &#x3D; 25, d &#x3D; 35<br>f &#x3D; 1937, a &#x3D; 1, b &#x3D; 44, c &#x3D; 16, d &#x3D; 41<br>f &#x3D; 2117, a &#x3D; 1, b &#x3D; 46, c &#x3D; 31, d &#x3D; 34<br>f &#x3D; 2210, a &#x3D; 1, b &#x3D; 47, c &#x3D; 19, d &#x3D; 43<br>f &#x3D; 2210, a &#x3D; 1, b &#x3D; 47, c &#x3D; 23, d &#x3D; 41<br>f &#x3D; 2210, a &#x3D; 1, b &#x3D; 47, c &#x3D; 29, d &#x3D; 37<br>f &#x3D; 2305, a &#x3D; 1, b &#x3D; 48, c &#x3D; 28, d &#x3D; 39</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
