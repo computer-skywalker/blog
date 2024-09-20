@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"computer-skywalker.github.io","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="2024年CSP-J奥林匹克入门组知识梳理计算机结构和组成 第一台电子计算机：ENIAC 第一台具有存储程序功能的计算机：EDVAC  冯·诺依曼根据存储程序的工作原理设计 由运算器、控制器、输入设备和输出设备五部分组成(冯·诺依曼体系) 同ENIAC相比，EDVAC方案的改进： (一)采用了”二进制” (二)提出了”存储程序” 冯·诺依曼体系：   信息界名人：    计算机发展的几个阶段：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSMDLR">
+<meta property="og:url" content="https://computer-skywalker.github.io/blog/2024/09/20/2024%E5%B9%B4CSP-J%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E5%85%A5%E9%97%A8%E7%BB%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:site_name" content="WSMDLR">
+<meta property="og:description" content="2024年CSP-J奥林匹克入门组知识梳理计算机结构和组成 第一台电子计算机：ENIAC 第一台具有存储程序功能的计算机：EDVAC  冯·诺依曼根据存储程序的工作原理设计 由运算器、控制器、输入设备和输出设备五部分组成(冯·诺依曼体系) 同ENIAC相比，EDVAC方案的改进： (一)采用了”二进制” (二)提出了”存储程序” 冯·诺依曼体系：   信息界名人：    计算机发展的几个阶段：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%201.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%202.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%203.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%204.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%205.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%206.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%207.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%208.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%209.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2010.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2011.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2012.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2013.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2014.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2015.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2016.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2017.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2018.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2019.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2020.png">
+<meta property="og:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled%2021.png">
+<meta property="article:published_time" content="2024-09-20T13:32:37.904Z">
+<meta property="article:modified_time" content="2024-09-20T13:35:06.325Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://computer-skywalker.github.io/blog/image/Olympics/Untitled.png">
+
+
+<link rel="canonical" href="https://computer-skywalker.github.io/blog/2024/09/20/2024%E5%B9%B4CSP-J%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E5%85%A5%E9%97%A8%E7%BB%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://computer-skywalker.github.io/blog/2024/09/20/2024%E5%B9%B4CSP-J%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E5%85%A5%E9%97%A8%E7%BB%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/","path":"2024/09/20/2024年CSP-J奥林匹克入门组知识梳理/","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title> | WSMDLR</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">WSMDLR</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个大聪明</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2024%E5%B9%B4CSP-J%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E5%85%A5%E9%97%A8%E7%BB%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">2024年CSP-J奥林匹克入门组知识梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%93%E6%9E%84%E5%92%8C%E7%BB%84%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">计算机结构和组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E4%BF%A1%E6%81%AF%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.</span> <span class="nav-text">进制转换与信息编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="nav-number">1.3.</span> <span class="nav-text">多媒体技术与计算机网络</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description">超级牛牛小博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://computer-skywalker.github.io/blog/2024/09/20/2024%E5%B9%B4CSP-J%E5%A5%A5%E6%9E%97%E5%8C%B9%E5%85%8B%E5%85%A5%E9%97%A8%E7%BB%84%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WSMDLR">
+      <meta itemprop="description" content="超级牛牛小博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | WSMDLR">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-09-20 21:32:37 / Modified: 21:35:06" itemprop="dateCreated datePublished" datetime="2024-09-20T21:32:37+08:00">2024-09-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="2024年CSP-J奥林匹克入门组知识梳理"><a href="#2024年CSP-J奥林匹克入门组知识梳理" class="headerlink" title="2024年CSP-J奥林匹克入门组知识梳理"></a>2024年CSP-J奥林匹克入门组知识梳理</h1><h2 id="计算机结构和组成"><a href="#计算机结构和组成" class="headerlink" title="计算机结构和组成"></a>计算机结构和组成</h2><ol>
+<li><strong>第一台电子计算机：ENIAC</strong></li>
+<li><strong>第一台具有存储程序功能的计算机：EDVAC</strong></li>
+</ol>
+<p><strong>冯·诺依曼</strong>根据<strong>存储程序</strong>的工作原理设计</p>
+<p>由<strong>运算器、控制器、输入设备和输出设备</strong>五部分组成(冯·诺依曼体系)</p>
+<p>同ENIAC相比，EDVAC方案的改进：</p>
+<p><strong>(一)<strong>采用了”</strong>二进制</strong>”</p>
+<p><strong>(二)<strong>提出了”</strong>存储程序</strong>”</p>
+<p><strong>冯·诺依曼体系：</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled.png" alt="Untitled"></p>
+<ol>
+<li><strong>信息界名人：</strong></li>
+</ol>
+<p><img src="/blog/./image/Olympics/Untitled%201.png" alt="Untitled"></p>
+<ol>
+<li><strong>计算机发展的几个阶段：</strong></li>
+</ol>
+<p><img src="/blog/./image/Olympics/Untitled%202.png" alt="Untitled"></p>
+<ol>
+<li><strong>保护知识产权</strong></li>
+</ol>
+<p><strong>《计算机软件保护条例》</strong>最早是<strong>1991年6月4日</strong>国务院发布的，现已废止。现公布修订的《计算机软件保护条例》，<strong>2002年1月1日起实施</strong></p>
+<p>第二章第八条：软件著作人享有下列各项权利：</p>
+<p><strong>(一)发表权    (二)署名权    (三)修改权    (四)复制权    (五)发行权    (六)出租权    (七)信息网络传播权    (八)翻译权    (九)应当由软件著作权人享有的其他权利</strong></p>
+<ol>
+<li><strong>计算机病毒</strong></li>
+</ol>
+<p>一种功能较特殊的<strong>计算机程序</strong>，特征：</p>
+<p><strong>(一)<strong>能够将</strong>自我复制</strong>到其他程序中**(传染性)**</p>
+<p><strong>(二)<strong>不独立以文件形式存在，仅附加在别的程序上</strong>(隐蔽性)</strong></p>
+<p>失去这两个特征中的<strong>任何一个</strong>，都不是病毒</p>
+<p>感染形式多样：<strong>存储介质</strong>(软盘、U盘、移动硬盘)、<strong>数据网络</strong>、<strong>蠕虫病毒</strong>，注意区别于<strong>恶意软件</strong></p>
+<ol>
+<li><strong>计算机系统的组成</strong></li>
+</ol>
+<p><strong>a.硬件</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%203.png" alt="Untitled"></p>
+<p>注：内存储器指<strong>CPU和内存</strong>，外存储器指<strong>硬盘、光盘、U盘、磁带等</strong></p>
+<p>计算机的**三总线(BUS)**结构：</p>
+<p>总线是一组<strong>导线</strong>，是<strong>公共电路</strong>，微型计算机中各个组成部件之间的<strong>信息传输</strong>都是通过它们来实现的</p>
+<p>**地址总线(AB)**是单向总线，用以传送CPU向外设或存储器发出的地址信息。(寻址能力，定义了最大访问内存数据大小)</p>
+<p>**数据总线(DB)**是双向总线，用以CPU与内存或接口之间传输数据信息</p>
+<p>**控制总线(CB)**是双向总线，有的作为输出，有的作为输入，用以CPU与内存或I&#x2F;O接口之间传送控制信息</p>
+<p><strong>分别传送地址信号、数据信号和控制信号</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%204.png" alt="Untitled"></p>
+<p><strong>(一)运算器+控制器&#x3D;CPU：中央处理器(C</strong>enter <strong>P</strong>rocess <strong>U</strong>nit**)**</p>
+<p>运算器：进行指定的算术或逻辑运算，结果送回主存储器或暂存在CPU内的寄存器中</p>
+<p>控制器：控制整个系统工作</p>
+<p>CPU的主频是指CPU在1秒内完成的指令周期数，单位为$GHz$或$Hz$</p>
+<p>换算：$1GHz&#x3D;1*10^9Hz$</p>
+<p><strong>(二)存储器</strong></p>
+<p><strong>外存储器</strong>：硬盘、光盘、软盘、U盘等</p>
+<p><strong>内存储器</strong>：ROM和RAM</p>
+<p><strong>ROM</strong>：Read Only Memory 只读处理器</p>
+<p><strong>RAM</strong>：Random Access Memory 随机存取存储器，即平时所说的内存</p>
+<p><strong>高速缓存器Cache</strong>：位于CPU与内存之间的临时存储器，容量小但交换速度快，由于CPU处理数据的速度极快，内存读写跟不上，缓存就起到中间数据交换的作用，能够预读取、临时存储数据、暂存运算结果</p>
+<p><strong>寄存器&gt;高速缓存器&gt;内存速度&gt;外存速度</strong></p>
+<p><strong>Intel</strong>首颗64位处理器是<strong>Pentium</strong></p>
+<p><strong>BIOS(基本输入输出单元)<strong>是一组固化在计算机内的</strong>主板</strong>上一个<strong>ROM</strong>芯片的程序</p>
+<p><strong>b. 软件</strong></p>
+<p><strong>系统软件</strong>(控制和维护计算机的正常运行，管理计算机的各种资源，以满足应用软件的需要)<strong>：</strong></p>
+<p><strong>(一)操作系统软件</strong>：DOS、<strong>Windows</strong>、<strong>MacOS</strong>、Windows Sever、Unix、<strong>Linux</strong>、Java</p>
+<p><strong>(二)计算机语言</strong>：机器语言、汇编语言、高级语言(Basic、Pascal、**C&#x2F;C++**、Python、Java)</p>
+<p><strong>应用软件</strong>(完成一个特定的任务，在系统软件的支持下，才能运行)：</p>
+<p>Office(Word、PowerPoint、Excel)、3dmax、Flash、Photoshop等</p>
+<p><strong>目前，世界上比较流行的数据库管理系统(DBMS)有</strong></p>
+<p>Informix、<strong>Oracle</strong>、Sybase、<strong>MySQL</strong>、<strong>SQL Server</strong>、DBASE、Paradox、Foxpro、<strong>Access</strong>等</p>
+<p>DOS(单用户、单任务)→Windows(多用户、 多任务)</p>
+<p><strong>(三)面向对象程序设计(Object Oriented Programming)</strong></p>
+<p>指一种程序设计方法，对应的是<strong>面向过程</strong>的程序设计，将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性、灵活性和扩展性</p>
+<p>20世纪70年代的<strong>SmallTalk</strong>语言在面向对象方面堪称经典，带有第一个真正的<strong>集成开发环境(IDE)</strong></p>
+<p><strong>C不支持</strong>面向对象，而面向过程</p>
+<h2 id="进制转换与信息编码"><a href="#进制转换与信息编码" class="headerlink" title="进制转换与信息编码"></a>进制转换与信息编码</h2><p>在计算机中，所有的信息都用<strong>二进制</strong>表示**(0,1)**</p>
+<p>计算机中的数据可以分为<strong>数值型</strong>数据和<strong>非数值型</strong>数据</p>
+<p><strong>数值型：</strong>有大小、正负之分</p>
+<p><strong>非数值型：</strong>字符、文字、图像、声音等一类的信息，以及条件、命令、状态一类的逻辑信息</p>
+<p><img src="/blog/./image/Olympics/Untitled%205.png" alt="Untitled"></p>
+<ol>
+<li><strong>计算机指令系统</strong></li>
+</ol>
+<p>计算机能直接识别和执行的命令称为<strong>指令</strong>，指令本身是<strong>二进制</strong>代码</p>
+<p>一条指令通常由<strong>操作码</strong>和<strong>地址码</strong>组成</p>
+<p><img src="/blog/./image/Olympics/Untitled%206.png" alt="Untitled"></p>
+<ol>
+<li><strong>计算机数字系统</strong></li>
+</ol>
+<p>采用二进制的原因及优点</p>
+<p>(1)<strong>可行性</strong>——在物理实现上只需要两种可能的极端状态表示0和1</p>
+<p>(2)<strong>简易性</strong>——二进制运算方法简单，可以使电路结构设计简化  </p>
+<p>求和法则：0+0&#x3D;0、0+1&#x3D;1、1+0&#x3D;1、1+1&#x3D;10</p>
+<p>求积法则：0<em>0&#x3D;0 、0</em>1&#x3D;0、1<em>1&#x3D;1、1</em>0&#x3D;0</p>
+<ol>
+<li><strong>逻辑运算 与 二进制的位运算</strong></li>
+</ol>
+<p>C++逻辑运算：&amp;&amp;(与)、||(或)、!(非)</p>
+<p>二进制的位运算：&amp;(与)、|(或)、~(非)、^(异或)</p>
+<p>运算优先级：非&gt;与&gt;或</p>
+<p><strong>(一)二进制的‘与’运算</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%207.png" alt="Untitled"></p>
+<p><strong>(二)‘或’运算</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%208.png" alt="Untitled"></p>
+<p><strong>(三)‘异或’运算</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%209.png" alt="Untitled"></p>
+<p><strong>(四)位移运算</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2010.png" alt="Untitled"></p>
+<ol>
+<li><strong>进制转换</strong></li>
+</ol>
+<p>Binary(二进制)</p>
+<p>Hex(十六进制)</p>
+<p>Octal(八进制)</p>
+<p>Decimal(十进制)</p>
+<p><strong>(一)N进制转十进制</strong></p>
+<p>将各位数字与权相乘，将积相加，和数就是十进制数</p>
+<p><img src="/blog/./image/Olympics/Untitled%2011.png" alt="Untitled"></p>
+<p><strong>(二)十进制转N进制</strong></p>
+<p><strong>整数：除N取余法</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2012.png" alt="Untitled"></p>
+<p><strong>小数：乘R取整法</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2013.png" alt="Untitled"></p>
+<p><strong>(三)二、八、十六进制的相互转换</strong></p>
+<p><strong>每位八进制数相当于三位二进制数，每位十六进制数相当于四位二进制数</strong></p>
+<p>转换时，组位划分<strong>以小数点为中心向左右两边延伸</strong>，<strong>中间的零不能省略，两头不够可以补零</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2014.png" alt="Untitled"></p>
+<p><strong>(四)信息的编码</strong></p>
+<ol>
+<li><strong>机器码(原码)</strong></li>
+</ol>
+<p>是计算机能够直接执行的一种<strong>低级编程语言</strong>。它由一系列二进制位(0和1)组成，这些二进制位直接对应计算机处理器的<strong>指令</strong>。每条机器码指令通常包括操作码和操作数两部分：</p>
+<p><strong>操作码</strong>：指定要执行的操作，例如加法、减法、数据移动等</p>
+<p><strong>操作数</strong>：指定操作所需的数据或数据的存储位置</p>
+<ol>
+<li><strong>反码</strong></li>
+</ol>
+<p>是一种用于表示有符号整数的<strong>二进制编码方法</strong>。在这种表示方法中，<strong>正数的表示方式和普通的二进制相同</strong>，而负数的表示方式则是将该数的绝对值的二进制码按位取反(即将所有的0变成1，所有的1变成0)</p>
+<p><strong>反码的计算方法</strong></p>
+<p><strong>正数</strong>：正数的反码与其原码（即普通的二进制表示）相同</p>
+<p><strong>负数</strong>：负数的反码是将该数绝对值的原码按位取反</p>
+<p><strong>4位二进制数的反码表示</strong></p>
+<p><strong>正数3的原码和反码：</strong></p>
+<p>原码：<code>0011</code></p>
+<p>反码：<code>0011</code>（与原码相同）</p>
+<p><strong>负数-3的原码和反码：</strong></p>
+<p>原码：<code>1011</code>（正数3的原码）</p>
+<p>反码：<code>1100</code>（将原码按位取反）</p>
+<ol>
+<li><strong>补码</strong></li>
+</ol>
+<p>是一种用于表示有符号整数的<strong>二进制编码方法</strong>。它是现代计算机中普遍采用的整数表示方法，因为它简化了算术运算，尤其是加减法运算。补码的表示方法如下：</p>
+<p><strong>补码的计算方法</strong></p>
+<p><strong>正数</strong>：正数的补码与其原码(即普通的二进制表示)相同</p>
+<p><strong>负数</strong>：负数的补码是其绝对值的二进制表示取反(反码)后加1</p>
+<p><strong>具体例子</strong></p>
+<p><strong>4位二进制数的补码表示</strong></p>
+<p><strong>正数3的补码</strong>：</p>
+<p>原码：<code>0011</code></p>
+<p>补码：<code>0011</code>(与原码相同)</p>
+<p><strong>负数-3的补码</strong>：</p>
+<p>原码：<code>0011</code>(正数3的原码)</p>
+<p>反码：<code>1100</code>(将原码按位取反)</p>
+<p>补码：<code>1100 + 1 = 1101</code></p>
+<ol>
+<li><strong>BCD码(8421码)</strong></li>
+</ol>
+<p>BCD码是一种用<strong>二进制数表示十进制数的方法</strong>。每个十进制数位(0-9)都用一个<strong>固定长度</strong>的二进制数来表示，通常是4位。这样，每个十进制数位可以单独转换为二进制数，并且多个十进制数位组合在一起表示一个更大的十进制数</p>
+<p>将十进制数29转换为BCD码：</p>
+<p>十进制数2的BCD表示：<code>0010</code></p>
+<p>十进制数9的BCD表示：<code>1001</code></p>
+<p><strong>因此，29的BCD表示为：</strong><code>0010 1001</code></p>
+<ol>
+<li><strong>ASCII码</strong></li>
+</ol>
+<p>是一种<strong>字符编码标准</strong>，用于在计算机和其他电子设备中<strong>表示文本</strong>。它使用7位二进制数(即0到127的整数)来表示128个字符，包括英文字母(大小写)、数字、标点符号以及一些控制字符</p>
+<ol>
+<li><strong>中国简体：GB2312(繁体：BIG5)</strong></li>
+</ol>
+<p>用二个七位二进制数编码表示一个汉字，共收录汉字<strong>6763</strong>个(一级汉字按<strong>汉语拼音字母顺序排列</strong>，共<strong>3775</strong>个；二级汉字按<strong>偏旁部首的比划顺序排列</strong>，共<strong>3008</strong>个)</p>
+<p>和ASCII码区别：对于二进制</p>
+<ol>
+<li><strong>Unicode</strong></li>
+</ol>
+<p>Unicode是一种<strong>字符编码标准</strong>，旨在为世界上所有书写系统的每个字符提供<strong>唯一的数字标识</strong>。Unicode 包含了世界上<strong>大多数书写系统的字符，还包括许多技术符号、标点符号和其他特殊字符</strong>。Unicode 的出现旨在解决不同字符编码之间的<strong>兼容性</strong>问题，使得全球范围内的文本处理和显示更加<strong>一致和准确</strong></p>
+<ol>
+<li><strong>信息存储单位</strong></li>
+</ol>
+<p>(一)位(bit)：度量数据的最小单位，表示一位二进制信息</p>
+<p>(二)字节(Byte)：一个字节由八位二进制数字组成(1Byte&#x3D;8bit)</p>
+<p>字节是信息存储中最常用的基本单位</p>
+<p>1KB&#x3D;1024Byte 1MB&#x3D;1024KB 1GB&#x3D;1024MB 1TB&#x3D;1024GB</p>
+<h2 id="多媒体技术与计算机网络"><a href="#多媒体技术与计算机网络" class="headerlink" title="多媒体技术与计算机网络"></a>多媒体技术与计算机网络</h2><ol>
+<li><strong>计算机多媒体技术</strong></li>
+</ol>
+<p>利用计算机交互性地综合处理<strong>文本、图像、动画、音频</strong>以及视频影像等多种信息，并使这些信息建立起逻辑链接</p>
+<p>功能：音频信号处理(<strong>声卡</strong>)，图形和图像处理(<strong>显卡</strong>)，视频处理(<strong>硬件解码、软件解码</strong>)</p>
+<p><strong>(一)多媒体技术中的位图</strong></p>
+<p>在计算机屏幕中看到的各种画面大致分为两种，一种是位图，另一种是矢量图</p>
+<p>位图由像素组成，由像素组成的画面称为图像</p>
+<p><strong>(二)常见位图格式比较</strong></p>
+<p><strong>BMP</strong>：优点—无损压缩，画质最好；缺点—文件太大，不利于传输</p>
+<p><strong>JPG</strong>：优点—文件小，利于传输；缺点—画质损失，不支持透明度</p>
+<p><strong>PNG</strong>：优点—无损压缩，支持透明度；缺点—画质中等，大小中等</p>
+<p><strong>GIF</strong>：优点—动画存储格式；缺点—最多256色，画质差</p>
+<p><strong>(三)多媒体技术中的矢量图</strong></p>
+<p>矢量图以<strong>数学</strong>的形式，对各种<strong>形状</strong>进行记录，最终看到由不同的形状组成的画面，称之为<strong>图形</strong></p>
+<p><strong>总结：位图—由像素组成—是图像，矢量图—由数学公式描述—是图形，图形和图像是两回事</strong></p>
+<p><strong>(四)多媒体技术相关概念</strong></p>
+<p>静止图像压缩标准<strong>JPEG</strong>(照片)</p>
+<p>动态图像压缩标准<strong>MPEG</strong>(电影)</p>
+<p><strong>RGB模式</strong>：分别代表<strong>红、绿、蓝</strong>三种颜色，计算机以RGB模式定义屏幕颜色</p>
+<p>通过混色原理，不同比例的RGB色彩可调和出无穷多种颜色</p>
+<p><strong>真彩色</strong>：人的眼睛能够分辨出的颜色大约有<strong>1670万种</strong>，为了表现出多种色彩，用24bit(3字节，$2^3$个空间，$2^8$种变化)来描述一个像素的颜色，这种显示模式称为真彩色</p>
+<ol>
+<li><strong>计算机网络技术</strong></li>
+</ol>
+<p><strong>(一)计算机网络的定义</strong></p>
+<p>由地理位置<strong>分散</strong>的、具有独立功能的多个计算机系统，经通讯设备和线路<strong>互相连接</strong>，借助<strong>网络协议</strong>，并配以相应的网络软件，以<strong>实现通信和资源共享</strong>的系统</p>
+<p><strong>(二)计算机网络的功能</strong></p>
+<p>1.硬件资源共享(远程打印)</p>
+<p>2.软件资源共享(Google Drive)</p>
+<p>3.数据和信息共享(电子邮件)</p>
+<p><strong>(三)计算机网络的物理组成</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2015.png" alt="Untitled"></p>
+<p><strong>(四)计算机网络的硬件包含</strong></p>
+<p><img src="/blog/./image/Olympics/Untitled%2016.png" alt="Untitled"></p>
+<p><strong>(五)计算机网络发展和分类</strong></p>
+<p><strong>“雏形”</strong>：主机—终端系统</p>
+<p><strong>里程碑</strong>：<strong>ARRANET</strong>网 1969年，在美互联网的国防部名为ARRANT的网络程序，该程序能将研究机构的电脑相互连通，为日后发展奠定基础</p>
+<p><strong>局域网(LAN)<strong>：是在</strong>一个建筑物、或一个校园、或公司内</strong>的网络，分布范围涉及几百米到十千米</p>
+<p><strong>广域网(Internet因特网)<strong>：将遍布</strong>全球</strong>的子网通过联网协议集成一个共享的、开放的、易于管理的主干网</p>
+<p><strong>有线网</strong>：传输介质采用<strong>有线介质连接</strong>的网络称为有线网，常用的有线传输介质有双绞线、同轴电缆和光纤等</p>
+<p><strong>无线网</strong>：采用无线介质连接的网络称为无线网。包括通过移动通信实现的<strong>无线网络(如5G、4G、3G或GPRS)、无线局域网(WIFI)、微波、红外线、激光</strong></p>
+<p><strong>(六)计算机网络的拓扑结构</strong></p>
+<p>网络中各个站点相互连接的方法的形式称之为<strong>网络拓扑</strong></p>
+<p><strong>总线型拓扑结构</strong>是一种共享通路的物理结构。这种结构具有信息的双向传输功能，普遍用于局域网的连接</p>
+<p><img src="/blog/./image/Olympics/Untitled%2017.png" alt="Untitled"></p>
+<p><strong>星型拓扑结构</strong>是一种以中央节点为中心，把若干外围节点连接起来的辐射式互联结构。安装容易，结构简单，费用低</p>
+<p><img src="/blog/./image/Olympics/Untitled%2018.png" alt="Untitled"></p>
+<p><strong>环型拓扑结构</strong>是将网络节点连接成闭合结构。信号顺着一个方向从一台设备传到另一台设备，每台设备都配有一个收发器，一个损坏其它机器都受到影响</p>
+<p><img src="/blog/./image/Olympics/Untitled%2019.png" alt="Untitled"></p>
+<p><strong>树形拓扑结构</strong>就像一棵“根”朝上的树，树形拓扑结构的优点是容易拓展、故障容易分离处理；缺点是整个网络对根的依赖性很大</p>
+<p><img src="/blog/./image/Olympics/Untitled%2020.png" alt="Untitled"></p>
+<p><strong>(七)计算机中的IP地址</strong></p>
+<p>Internet上的每一台机器都有自己独立的IP地址，通过这些IP地址可以对这些机器在Internet进行唯一标识，就像电脑有了门牌号码</p>
+<p>IP地址：是32位二进制数，分成4组，每组8位二进制数，每组之间用圆点隔开，用十进制表示</p>
+<p>IP地址范围：0.0.0.0~255.255.255.255 如：192.168.0.1</p>
+<p>00000000 00000000 00000000 00000000 0.0.0.0</p>
+<p>11111111 11111111 11111111 11111111 255.255.255.255</p>
+<p>(八)因特网上的域名和地址</p>
+<p>IP地址作为Internet上主机的数字标识，对计算机网络来说是非常有效的，但对于使用者来说，很难记忆这些由数字组成的IP地址了。所以我们为每台提供服务的计算机分配一个“标准名称”，这个用字符表示的“标准名称”就是我们现在所广泛使用的域名。域名的出现，只是为了让人方便记忆，分段进行表示</p>
+<p><img src="/blog/./image/Olympics/Untitled%2021.png" alt="Untitled"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2024/09/16/%E5%85%AC%E5%91%8A/" rel="prev" title="">
+                  <i class="fa fa-angle-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/schemes/muse.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
